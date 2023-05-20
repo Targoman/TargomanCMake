@@ -22,6 +22,7 @@ endfunction()
 
 function(tg_add_library_headers target_name type)
     list(TRANSFORM ARGN STRIP OUTPUT_VARIABLE headers)
+    list(TRANSFORM headers PREPEND ${CMAKE_CURRENT_SOURCE_DIR})
     list(JOIN headers ";" headers)
     set_target_properties(${target_name} PROPERTIES ${type} "${headers}")
 endfunction()
